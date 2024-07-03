@@ -36,15 +36,19 @@ export const Fetch = ({pageName}) => {
     }
 
     const changeUrl = () => {
-        setUrl(inputRef.current.value);        
+        // setUrl(inputRef.current.value);        
         getData();
     }
+
+    const handleInput = (e) => {
+        setUrl(e.target.value);
+    };
 
     return (
         <div>
             <h1>{pageName}</h1>
             <p>URL Requested: {url}</p>
-            <input ref={inputRef} type="text" defaultValue={url} placeholder={url} />
+            <input ref={inputRef} type="text" value={url} onChange={handleInput} />
             <select onChange={handleMethod}>
                 <option value="0">Select a method</option>
                 { methods.map((val, index) => {
